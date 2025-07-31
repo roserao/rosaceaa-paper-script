@@ -1,0 +1,47 @@
+import numpy as np
+
+v_data = ["SPG1_Olson", "RNC", "CD19", "CAS9_pos",
+          "CAS9_neg", "CAR11_lof", "CAR11_gof"]
+v_model = [1, 2, 3]
+
+rule all:
+    input:
+        expand("results/analysis/{data}/rosace_eval_full.rds", data = v_data)
+
+
+# v_data = ["metex14", "oct1_sm73", "slco1b1_ros", "slco1b1",
+#           "abcg2_dox", "abcg2_mtx", "abcg2_sn38", "msh2",
+#           "psd95", "psd95_cript", "grb2", "grb2_gab2"]
+# v_model = [1, 2, 3]
+
+# rule all:
+#     input:
+#         expand("results/analysis/{data}/rosace_eval_full.rds", data = v_data)
+
+# with open("config/domain_list.txt") as file:
+#     lines = [line.rstrip() for line in file]
+# v_model = [1, 2, 3]
+
+# rule all:
+#     input:
+#         expand("results_domainase/analysis/{data}/rosace_eval_full.rds", data = lines)
+
+# with open("config/met_list.txt") as file:
+#     lines = [line.rstrip() for line in file]
+# v_model = [1, 2, 3]
+
+# rule all:
+#     input:
+#         expand("results_met/analysis/{data}/rosace_eval_full.rds", data = lines)
+
+
+# with open("config/oct1_list.txt") as file:
+#     lines = [line.rstrip() for line in file]
+# v_model = [1, 2, 3]
+
+# rule all:
+#     input:
+#         expand("results_oct/analysis/{data}/rosace_eval_full.rds", data = lines)
+
+
+include: "rules/run_rosace.smk"
