@@ -1,0 +1,15 @@
+import numpy as np
+
+v_data = [2, 3, 4]
+v_mode = [1, 2, 3, 4, 5]
+v_nrep = [3]
+v_nround = [3]
+nsim = 2
+v_model = [2, 3]
+
+rule all:
+    input:
+        expand("results/analysis/data{data}/growth_rep{rep}_rd{rd}_{mode}/sim{sim}/rosace_eval_full.rds",
+            sim = range(1, 1 + nsim), data = v_data, rep = v_nrep, rd = v_nround, mode = v_mode)
+
+include: "rules/simulation.smk"
